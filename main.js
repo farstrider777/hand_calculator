@@ -4,7 +4,9 @@ createMatrix();
 var ak = document.getElementById("AKs");
 
 
-
+function changeBoxColor(){
+  //change jquery class here
+}
 
 
 function createMatrix(){
@@ -26,4 +28,4 @@ function createMatrix(){
   }
 }
 
-ak.addEventListener('click', createMatrix);
+ak.addEventListener('click', changeBoxColor);
