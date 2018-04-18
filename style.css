@@ -1,0 +1,14 @@
+input{
+  background: lightgray;
+}
+
+.box{
+  width: 25px;
+  height: 25px;
+  background-color: gray;
+  border: 1px solid black;
+}
+
+.inline{
+  display: inline-block;
+}
