@@ -1,12 +1,40 @@
 var arrayCards = ["A", "K", "Q", "J", "T", "9", "8", "7", "6", "5", "4", "3", "2"]
 createMatrix();
+var totalPercentage = 0;
 
 function changeBoxColor(event){
   var myDivId = `#${event.target.id}`
   if($(myDivId).css("background-color") === "rgb(255, 255, 0)"){
     $(myDivId).css("background-color", "");
+    subtractFromTotal(myDivId);
   }else{
     $(myDivId).css("background-color", "yellow");
+    addToTotal(myDivId);
+  }
+  console.log(totalPercentage)
+  // .0754
+  // .3016  .4524  .9048
+  // 23.5248 5.8812 70.5744 = 99.9804
+  // 0.075414781297134
+}
+
+function addToTotal(myDivId){
+  if(myDivId.length === 4){
+    totalPercentage = totalPercentage + .3016
+  }else if(myDivId[1] === myDivId[2]){
+    totalPercentage = totalPercentage + .4524
+  }else{
+    totalPercentage = totalPercentage + .9048
+  }
+}
+
+function subtractFromTotal(myDivId){
+  if(myDivId.length === 4){
+    totalPercentage = totalPercentage - .3016
+  }else if(myDivId[1] === myDivId[2]){
+    totalPercentage = totalPercentage - .4524
+  }else{
+    totalPercentage = totalPercentage - .9048
   }
 }
 
