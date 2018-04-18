@@ -2,10 +2,24 @@ input{
   background: lightgray;
 }
 
-.box{
+.boxSuited{
+  width: 25px;
+  height: 25px;
+  background-color: green;
+  border: 1px solid black;
+}
+
+.boxUnsuited{
   width: 25px;
   height: 25px;
   background-color: gray;
+  border: 1px solid black;
+}
+
+.boxPaired{
+  width: 25px;
+  height: 25px;
+  background-color: red;
   border: 1px solid black;
 }
 
