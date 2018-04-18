@@ -10,12 +10,12 @@ function createMatrix(){
     for(x = 0; x < 14; x++){
       if(x < 13){
         if(x === i){
-          $("#new").append("<div class='boxPaired inline'>" + arrayCards[x]+ arrayCards[i] +"</div>")
+          $("#new").append("<div class='boxPaired inline' id='" + arrayCards[x] + arrayCards[i] + "'>" + arrayCards[x] + arrayCards[i] + "</div>")
         }else if(x < i){
-          $("#new").append("<div class='boxUnsuited inline'>" + arrayCards[x]+ arrayCards[i] +"</div>")
+          $("#new").append("<div class='boxUnsuited inline' id='" + arrayCards[x] + arrayCards[i] + "'>" + arrayCards[x] + arrayCards[i] + "</div>")
         }
         else{
-          $("#new").append("<div class='boxSuited inline'>" + arrayCards[i]+ arrayCards[x] +"</div>")
+          $("#new").append("<div class='boxSuited inline' id='"+ arrayCards[i] + arrayCards[x] +"'>" + arrayCards[i] + arrayCards[x] + "</div>")
         }
       }else{
         $("#new").append("<br>")
