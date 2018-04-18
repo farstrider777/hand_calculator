@@ -11,7 +11,7 @@ function changeBoxColor(event){
     $(myDivId).css("background-color", "yellow");
     addToTotal(myDivId);
   }
-  console.log(totalPercentage)
+  $("#totalPercentage").html(Math.round(totalPercentage * 10000)/10000)
   // .0754
   // .3016  .4524  .9048
   // 23.5248 5.8812 70.5744 = 99.9804
