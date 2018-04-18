@@ -3,7 +3,11 @@ createMatrix();
 
 function changeBoxColor(event){
   var myDivId = `#${event.target.id}`
-  $(myDivId).css("background-color", "yellow");
+  if($(myDivId).css("background-color") === "rgb(255, 255, 0)"){
+    $(myDivId).css("background-color", "");
+  }else{
+    $(myDivId).css("background-color", "yellow");
+  }
 }
 
 function createMatrix(){
