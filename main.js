@@ -1,5 +1,17 @@
 var arrayCards = ["A", "K", "Q", "J", "T", "9", "8", "7", "6", "5", "4", "3", "2"]
 createMatrix();
+var allHands = []
+
+for(i = 0; i < 13; i++){
+  for(x = 0; x < 13; x++){
+    if (x < i){
+      allHands.push("#" + arrayCards[x] + arrayCards[i] + "s")
+    } else {
+      allHands.push("#" + arrayCards[i] + arrayCards[x])
+    }
+  }
+}
+
 var totalPercentage = 0;
 
 var slider = document.getElementById("myRange");
@@ -15,6 +27,39 @@ slider.oninput = function() {
 function changeByPercentage(newPercentage) {
   if (newPercentage < 2){
     changeAllBoxColor(["#AA","#KK"])
+  }
+  else if (newPercentage < 3){
+    changeAllBoxColor(["#AA","#KK","#QQ","#JJ","#AKs"])
+  }
+  else if (newPercentage < 4){
+    changeAllBoxColor(["#AA","#KK","#QQ","#JJ","#AKs","#TT","#99"])
+  }
+  else if (newPercentage < 5){
+    changeAllBoxColor(["#AA","#KK","#QQ","#JJ","#AKs","#TT","#99","#AK"])
+  }
+  else if (newPercentage < 6){
+    changeAllBoxColor(["#AA","#KK","#QQ","#JJ","#AKs","#TT","#99","#AK","#AQs","#88","#77"])
+  }
+  else if (newPercentage < 7){
+    changeAllBoxColor(["#AA","#KK","#QQ","#JJ","#AKs","#TT","#99","#AK","#AQs","#88","#77","#AQ"])
+  }
+  else if (newPercentage < 8){
+    changeAllBoxColor(["#AA","#KK","#QQ","#JJ","#AKs","#TT","#99","#AK","#AQs","#88","#77","#AQ","#AJs","#ATs","#KQs"])
+  }
+  else if (newPercentage < 9){
+    changeAllBoxColor(["#AA","#KK","#QQ","#JJ","#AKs","#TT","#99","#AK","#AQs","#88","#77","#AQ","#AJs","#ATs","#KQs","#AJ"])
+  }
+  else if (newPercentage < 10){
+    changeAllBoxColor(["#AA","#KK","#QQ","#JJ","#AKs","#TT","#99","#AK","#AQs","#88","#77","#AQ","#AJs","#ATs","#KQs","#AJ","#66","#A9s","#55"])
+  }
+  else if (newPercentage < 11){
+    changeAllBoxColor(["#AA","#KK","#QQ","#JJ","#AKs","#TT","#99","#AK","#AQs","#88","#77","#AQ","#AJs","#ATs","#KQs","#AJ","#66","#A9s","#55","#AT"])
+  }
+  else if (newPercentage < 12){
+    changeAllBoxColor(["#AA","#KK","#QQ","#JJ","#AKs","#TT","#99","#AK","#AQs","#88","#77","#AQ","#AJs","#ATs","#KQs","#AJ","#66","#A9s","#55","#AT","#44","#A8s","#KJs"])
+  }
+  else if (newPercentage < 13){
+    changeAllBoxColor(["#AA","#KK","#QQ","#JJ","#AKs","#TT","#99","#AK","#AQs","#88","#77","#AQ","#AJs","#ATs","#KQs","#AJ","#66","#A9s","#55","#AT","#44","#A8s","#KJs","#KQ"])
   }
 }
 
@@ -42,17 +87,6 @@ function changeAllBoxColor(handList){
     //console.log(i)
     $(handList[i]).css("background-color", "yellow");
     addToTotal(handList[i]);
-  }
-  var allHands = []
-
-  for(i = 0; i < 13; i++){
-    for(x = 0; x < 13; x++){
-      if (x < i){
-        allHands.push("#" + arrayCards[x] + arrayCards[i] + "s")
-      } else {
-        allHands.push("#" + arrayCards[i] + arrayCards[x])
-      }
-    }
   }
 
   var handsNotInPercentage = arr_diff(handList, allHands)
