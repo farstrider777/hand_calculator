@@ -14,17 +14,54 @@ slider.oninput = function() {
 
 function changeByPercentage(newPercentage) {
   if (newPercentage < 2){
-    changeBoxColor({target: {id: "AA"}})
-    changeBoxColor({target: {id: "KK"}})
-    // changeBoxColor({target: {id: "QQ"}}, false)
-    // changeBoxColor({target: {id: "JJ"}}, false)
+    changeAllBoxColor(["#AA","#KK"])
   }
-  // if (newPercentage < 3){
-  //   changeBoxColor({target: {id: "AA"}}, true)
-  //   changeBoxColor({target: {id: "KK"}}, true)
-  //   changeBoxColor({target: {id: "QQ"}}, true)
-  //   changeBoxColor({target: {id: "JJ"}}, true)
-  // }
+}
+
+function arr_diff (a1, a2) {
+    var a = [], diff = [];
+    for (var i = 0; i < a1.length; i++) {
+        a[a1[i]] = true;
+    }
+    for (var i = 0; i < a2.length; i++) {
+        if (a[a2[i]]) {
+            delete a[a2[i]];
+        } else {
+            a[a2[i]] = true;
+        }
+    }
+    for (var k in a) {
+        diff.push(k);
+    }
+    return diff;
+}
+
+function changeAllBoxColor(handList){
+  totalPercentage = 0;
+  for(i = 0; i < handList.length; i++){
+    //console.log(i)
+    $(handList[i]).css("background-color", "yellow");
+    addToTotal(handList[i]);
+  }
+  var allHands = []
+
+  for(i = 0; i < 13; i++){
+    for(x = 0; x < 13; x++){
+      if (x < i){
+        allHands.push("#" + arrayCards[x] + arrayCards[i] + "s")
+      } else {
+        allHands.push("#" + arrayCards[i] + arrayCards[x])
+      }
+    }
+  }
+
+  var handsNotInPercentage = arr_diff(handList, allHands)
+
+  for(i = 0; i < handsNotInPercentage.length; i++){
+      $(handsNotInPercentage[i]).css("background-color", "");
+  }
+
+  $("#totalPercentage").html(Math.round(totalPercentage * 10000)/10000)
 }
 
 
