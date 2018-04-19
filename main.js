@@ -2,6 +2,32 @@ var arrayCards = ["A", "K", "Q", "J", "T", "9", "8", "7", "6", "5", "4", "3", "2
 createMatrix();
 var totalPercentage = 0;
 
+var slider = document.getElementById("myRange");
+var output = document.getElementById("demo");
+output.innerHTML = slider.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider.oninput = function() {
+    output.innerHTML = this.value;
+    changeByPercentage(this.value);
+}
+
+function changeByPercentage(newPercentage) {
+  if (newPercentage < 2){
+    changeBoxColor({target: {id: "AA"}})
+    changeBoxColor({target: {id: "KK"}})
+    // changeBoxColor({target: {id: "QQ"}}, false)
+    // changeBoxColor({target: {id: "JJ"}}, false)
+  }
+  // if (newPercentage < 3){
+  //   changeBoxColor({target: {id: "AA"}}, true)
+  //   changeBoxColor({target: {id: "KK"}}, true)
+  //   changeBoxColor({target: {id: "QQ"}}, true)
+  //   changeBoxColor({target: {id: "JJ"}}, true)
+  // }
+}
+
+
 function changeBoxColor(event){
   var myDivId = `#${event.target.id}`
   if($(myDivId).css("background-color") === "rgb(255, 255, 0)"){
