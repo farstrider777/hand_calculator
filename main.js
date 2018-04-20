@@ -51,10 +51,12 @@ function changeByPercentage(newPercentage){
   convertArray();
   totalPercentage = 0;
   count = 0;
-  if (newPercentage > 99){
+  if (newPercentage == 100){
     convertArray();
     changeAllBoxColor(sklanskyChubukovPlus)
-  }else{
+  } else if (newPercentage == 0) {
+    changeAllBoxColor([])
+  } else {
     for(i = 0; i < 169; i++){
       addToTotal(sklanskyChubukovPlus[i])
       if (totalPercentage >= newPercentage){
