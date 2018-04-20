@@ -116,25 +116,26 @@ function changeBoxColor(event){
   // .3016  .4524  .9048
   // 23.5248 5.8812 70.5744 = 99.9804
   // 0.075414781297134
+  //0.301659125188536  0.452488687782804 0.904977375565608
 }
 
 function addToTotal(myDivId){
   if(myDivId.length === 4){
-    totalPercentage = totalPercentage + .3016
+    totalPercentage = totalPercentage + 0.301659125188536
   }else if(myDivId[1] === myDivId[2]){
-    totalPercentage = totalPercentage + .4524
+    totalPercentage = totalPercentage + 0.452488687782804
   }else{
-    totalPercentage = totalPercentage + .9048
+    totalPercentage = totalPercentage + 0.904977375565608
   }
 }
 
 function subtractFromTotal(myDivId){
   if(myDivId.length === 4){
-    totalPercentage = totalPercentage - .3016
+    totalPercentage = totalPercentage - 0.301659125188536
   }else if(myDivId[1] === myDivId[2]){
-    totalPercentage = totalPercentage - .4524
+    totalPercentage = totalPercentage - 0.452488687782804
   }else{
-    totalPercentage = totalPercentage - .9048
+    totalPercentage = totalPercentage - 0.904977375565608
   }
 }
 
