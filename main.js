@@ -1,7 +1,21 @@
 var arrayCards = ["A", "K", "Q", "J", "T", "9", "8", "7", "6", "5", "4", "3", "2"]
 createMatrix();
 var allHands = []
+var sklanskyChubukov = ["AA","KK","AKs","QQ","AK","JJ","AQs","TT","AQ","99","AJs","88","ATs",
+                        "AJ","77","66","AT","A9s","55","A8s","KQs","44","A9","A7s","KJs","A5s",
+                        "A8","A6s","A4s","33","KTs","A7","A3s","KQ","A2s","A5","A6","A4","KJ",
+                        "QJs","A3","22","K9s","A2","KT","QTs","K8s","K7s","JTs","K9","K6s","QJ",
+                        "Q9s","K5s","K8","K4s","QT","K7","K3s","K2s","Q8s","K6","J9s","K5","Q9",
+                        "JT","K4","Q7s","T9s","Q6s","K3","J8s","Q5s","K2","Q8","Q4s","J9","Q3s",
+                        "T8s","J7s","Q7","Q2s","Q6","98s","Q5","J8","T9","J6s","T7s","J5s","Q4",
+                        "J4s","J7","Q3","97s","T8","J3s","T6s","Q2","J2s","87s","J6","98","T7",
+                        "96s","J5","T5s","T4s","86s","J4","T6","97","T3s","76s","95s","J3","T2s",
+                        "87","85s","96","T5","J2","75s","94s","T4","65s","86","93s","84s","95",
+                        "T3","76","92s","74s","54s","T2","85","64s","83s","94","75","82s","73s",
+                        "93","65","53s","63s","84","92","43s","74","72s","54","64","52s","62s",
+                        "83","42s","82","73","53","63","32s","43","72","52","62","42","32"]
 
+//for loop to fill out all the cards
 for(i = 0; i < 13; i++){
   for(x = 0; x < 13; x++){
     if (x < i){
@@ -11,6 +25,15 @@ for(i = 0; i < 13; i++){
     }
   }
 }
+var sklanskyChubukovPlus = [];
+//for loop to add # to sklanskyChubukov ratings
+function convertArray () {
+  for(i = 0; i < sklanskyChubukov.length; i++){
+    sklanskyChubukovPlus[i] = "#" + sklanskyChubukov[i]
+  }
+}
+
+//convertArray();
 
 var totalPercentage = 0;
 
@@ -24,44 +47,65 @@ slider.oninput = function() {
     changeByPercentage(this.value);
 }
 
-function changeByPercentage(newPercentage) {
-  if (newPercentage < 2){
-    changeAllBoxColor(["#AA","#KK"])
+function changeByPercentage(newPercentage){
+  console.log("ran changeByPercentage once")
+  convertArray();
+  totalPercentage = 0;
+  count = 0;
+  for(i = 0; i < 169; i++){
+    addToTotal(sklanskyChubukovPlus[i])
+    if (totalPercentage >= newPercentage){
+      count = i;
+      break;
+    }
   }
-  else if (newPercentage < 3){
-    changeAllBoxColor(["#AA","#KK","#QQ","#JJ","#AKs"])
-  }
-  else if (newPercentage < 4){
-    changeAllBoxColor(["#AA","#KK","#QQ","#JJ","#AKs","#TT","#99"])
-  }
-  else if (newPercentage < 5){
-    changeAllBoxColor(["#AA","#KK","#QQ","#JJ","#AKs","#TT","#99","#AK"])
-  }
-  else if (newPercentage < 6){
-    changeAllBoxColor(["#AA","#KK","#QQ","#JJ","#AKs","#TT","#99","#AK","#AQs","#88","#77"])
-  }
-  else if (newPercentage < 7){
-    changeAllBoxColor(["#AA","#KK","#QQ","#JJ","#AKs","#TT","#99","#AK","#AQs","#88","#77","#AQ"])
-  }
-  else if (newPercentage < 8){
-    changeAllBoxColor(["#AA","#KK","#QQ","#JJ","#AKs","#TT","#99","#AK","#AQs","#88","#77","#AQ","#AJs","#ATs","#KQs"])
-  }
-  else if (newPercentage < 9){
-    changeAllBoxColor(["#AA","#KK","#QQ","#JJ","#AKs","#TT","#99","#AK","#AQs","#88","#77","#AQ","#AJs","#ATs","#KQs","#AJ"])
-  }
-  else if (newPercentage < 10){
-    changeAllBoxColor(["#AA","#KK","#QQ","#JJ","#AKs","#TT","#99","#AK","#AQs","#88","#77","#AQ","#AJs","#ATs","#KQs","#AJ","#66","#A9s","#55"])
-  }
-  else if (newPercentage < 11){
-    changeAllBoxColor(["#AA","#KK","#QQ","#JJ","#AKs","#TT","#99","#AK","#AQs","#88","#77","#AQ","#AJs","#ATs","#KQs","#AJ","#66","#A9s","#55","#AT"])
-  }
-  else if (newPercentage < 12){
-    changeAllBoxColor(["#AA","#KK","#QQ","#JJ","#AKs","#TT","#99","#AK","#AQs","#88","#77","#AQ","#AJs","#ATs","#KQs","#AJ","#66","#A9s","#55","#AT","#44","#A8s","#KJs"])
-  }
-  else if (newPercentage < 13){
-    changeAllBoxColor(["#AA","#KK","#QQ","#JJ","#AKs","#TT","#99","#AK","#AQs","#88","#77","#AQ","#AJs","#ATs","#KQs","#AJ","#66","#A9s","#55","#AT","#44","#A8s","#KJs","#KQ"])
-  }
+  totalPercentage = 0;
+  var test = sklanskyChubukovPlus.splice(0, count + 1)
+  console.log(test)
+  changeAllBoxColor(test)
+  //changeAllBoxColor(["#AA","#KK","#QQ","#JJ","#AKs"])
 }
+
+// function changeByPercentage(newPercentage) {
+//   //personal list I worked on supplanted by sklanskyChubukov
+//   //"#AA","#KK","#QQ","#JJ","#AKs","#TT","#99","#AK","#AQs","#88","#77","#AQ","#AJs","#ATs","#KQs","#AJ","#66","#A9s","#55","#AT","#44","#A8s","#KJs","#KQ"
+//   if (newPercentage < 2){
+//     //setNewPercentage(newPercentage)
+//   }
+//   else if (newPercentage < 3){
+//     changeAllBoxColor(["#AA","#KK","#QQ","#JJ","#AKs"])
+//   }
+//   else if (newPercentage < 4){
+//     changeAllBoxColor(["#AA","#KK","#QQ","#JJ","#AKs","#TT","#99"])
+//   }
+//   else if (newPercentage < 5){
+//     changeAllBoxColor(["#AA","#KK","#QQ","#JJ","#AKs","#TT","#99","#AK"])
+//   }
+//   else if (newPercentage < 6){
+//     changeAllBoxColor(["#AA","#KK","#QQ","#JJ","#AKs","#TT","#99","#AK","#AQs","#88","#77"])
+//   }
+//   else if (newPercentage < 7){
+//     changeAllBoxColor(["#AA","#KK","#QQ","#JJ","#AKs","#TT","#99","#AK","#AQs","#88","#77","#AQ"])
+//   }
+//   else if (newPercentage < 8){
+//     changeAllBoxColor(["#AA","#KK","#QQ","#JJ","#AKs","#TT","#99","#AK","#AQs","#88","#77","#AQ","#AJs","#ATs","#KQs"])
+//   }
+//   else if (newPercentage < 9){
+//     changeAllBoxColor(["#AA","#KK","#QQ","#JJ","#AKs","#TT","#99","#AK","#AQs","#88","#77","#AQ","#AJs","#ATs","#KQs","#AJ"])
+//   }
+//   else if (newPercentage < 10){
+//     changeAllBoxColor(["#AA","#KK","#QQ","#JJ","#AKs","#TT","#99","#AK","#AQs","#88","#77","#AQ","#AJs","#ATs","#KQs","#AJ","#66","#A9s","#55"])
+//   }
+//   else if (newPercentage < 11){
+//     changeAllBoxColor(["#AA","#KK","#QQ","#JJ","#AKs","#TT","#99","#AK","#AQs","#88","#77","#AQ","#AJs","#ATs","#KQs","#AJ","#66","#A9s","#55","#AT"])
+//   }
+//   else if (newPercentage < 12){
+//     changeAllBoxColor(["#AA","#KK","#QQ","#JJ","#AKs","#TT","#99","#AK","#AQs","#88","#77","#AQ","#AJs","#ATs","#KQs","#AJ","#66","#A9s","#55","#AT","#44","#A8s","#KJs"])
+//   }
+//   else if (newPercentage < 13){
+//     changeAllBoxColor(["#AA","#KK","#QQ","#JJ","#AKs","#TT","#99","#AK","#AQs","#88","#77","#AQ","#AJs","#ATs","#KQs","#AJ","#66","#A9s","#55","#AT","#44","#A8s","#KJs","#KQ"])
+//   }
+// }
 
 function arr_diff (a1, a2) {
     var a = [], diff = [];
@@ -82,9 +126,11 @@ function arr_diff (a1, a2) {
 }
 
 function changeAllBoxColor(handList){
+  console.log("ranYellowChange with")
+  console.log(handList)
+  console.log("ran changeAllBoxColor once")
   totalPercentage = 0;
   for(i = 0; i < handList.length; i++){
-    //console.log(i)
     $(handList[i]).css("background-color", "yellow");
     addToTotal(handList[i]);
   }
