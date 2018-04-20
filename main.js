@@ -48,64 +48,24 @@ slider.oninput = function() {
 }
 
 function changeByPercentage(newPercentage){
-  console.log("ran changeByPercentage once")
   convertArray();
   totalPercentage = 0;
   count = 0;
-  for(i = 0; i < 169; i++){
-    addToTotal(sklanskyChubukovPlus[i])
-    if (totalPercentage >= newPercentage){
-      count = i;
-      break;
+  if (newPercentage > 99){
+    convertArray();
+    changeAllBoxColor(sklanskyChubukovPlus)
+  }else{
+    for(i = 0; i < 169; i++){
+      addToTotal(sklanskyChubukovPlus[i])
+      if (totalPercentage >= newPercentage){
+        count = i;
+        break;
+      }
     }
+    totalPercentage = 0;
+    changeAllBoxColor(sklanskyChubukovPlus.splice(0, count + 1))
   }
-  totalPercentage = 0;
-  var test = sklanskyChubukovPlus.splice(0, count + 1)
-  console.log(test)
-  changeAllBoxColor(test)
-  //changeAllBoxColor(["#AA","#KK","#QQ","#JJ","#AKs"])
 }
-
-// function changeByPercentage(newPercentage) {
-//   //personal list I worked on supplanted by sklanskyChubukov
-//   //"#AA","#KK","#QQ","#JJ","#AKs","#TT","#99","#AK","#AQs","#88","#77","#AQ","#AJs","#ATs","#KQs","#AJ","#66","#A9s","#55","#AT","#44","#A8s","#KJs","#KQ"
-//   if (newPercentage < 2){
-//     //setNewPercentage(newPercentage)
-//   }
-//   else if (newPercentage < 3){
-//     changeAllBoxColor(["#AA","#KK","#QQ","#JJ","#AKs"])
-//   }
-//   else if (newPercentage < 4){
-//     changeAllBoxColor(["#AA","#KK","#QQ","#JJ","#AKs","#TT","#99"])
-//   }
-//   else if (newPercentage < 5){
-//     changeAllBoxColor(["#AA","#KK","#QQ","#JJ","#AKs","#TT","#99","#AK"])
-//   }
-//   else if (newPercentage < 6){
-//     changeAllBoxColor(["#AA","#KK","#QQ","#JJ","#AKs","#TT","#99","#AK","#AQs","#88","#77"])
-//   }
-//   else if (newPercentage < 7){
-//     changeAllBoxColor(["#AA","#KK","#QQ","#JJ","#AKs","#TT","#99","#AK","#AQs","#88","#77","#AQ"])
-//   }
-//   else if (newPercentage < 8){
-//     changeAllBoxColor(["#AA","#KK","#QQ","#JJ","#AKs","#TT","#99","#AK","#AQs","#88","#77","#AQ","#AJs","#ATs","#KQs"])
-//   }
-//   else if (newPercentage < 9){
-//     changeAllBoxColor(["#AA","#KK","#QQ","#JJ","#AKs","#TT","#99","#AK","#AQs","#88","#77","#AQ","#AJs","#ATs","#KQs","#AJ"])
-//   }
-//   else if (newPercentage < 10){
-//     changeAllBoxColor(["#AA","#KK","#QQ","#JJ","#AKs","#TT","#99","#AK","#AQs","#88","#77","#AQ","#AJs","#ATs","#KQs","#AJ","#66","#A9s","#55"])
-//   }
-//   else if (newPercentage < 11){
-//     changeAllBoxColor(["#AA","#KK","#QQ","#JJ","#AKs","#TT","#99","#AK","#AQs","#88","#77","#AQ","#AJs","#ATs","#KQs","#AJ","#66","#A9s","#55","#AT"])
-//   }
-//   else if (newPercentage < 12){
-//     changeAllBoxColor(["#AA","#KK","#QQ","#JJ","#AKs","#TT","#99","#AK","#AQs","#88","#77","#AQ","#AJs","#ATs","#KQs","#AJ","#66","#A9s","#55","#AT","#44","#A8s","#KJs"])
-//   }
-//   else if (newPercentage < 13){
-//     changeAllBoxColor(["#AA","#KK","#QQ","#JJ","#AKs","#TT","#99","#AK","#AQs","#88","#77","#AQ","#AJs","#ATs","#KQs","#AJ","#66","#A9s","#55","#AT","#44","#A8s","#KJs","#KQ"])
-//   }
-// }
 
 function arr_diff (a1, a2) {
     var a = [], diff = [];
@@ -126,9 +86,6 @@ function arr_diff (a1, a2) {
 }
 
 function changeAllBoxColor(handList){
-  console.log("ranYellowChange with")
-  console.log(handList)
-  console.log("ran changeAllBoxColor once")
   totalPercentage = 0;
   for(i = 0; i < handList.length; i++){
     $(handList[i]).css("background-color", "yellow");
