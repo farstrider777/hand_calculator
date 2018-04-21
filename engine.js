@@ -66,4 +66,20 @@ function dealHands(numberOfPlayers){
   }
 }
 
-dealHands(26);
+dealHands(1);
+
+boardArray = []
+
+function dealBoard() {
+  console.log(cardsArray.length)
+  for(i = 0; i < 5; i++){
+    var chosenCard = cardsArray[getRandomInt(cardsArray.length)]
+    console.log(chosenCard)
+    boardArray.push(chosenCard)
+    cardsArray = arr_diff(cardsArray, [chosenCard])
+    console.log(cardsArray.length)
+  }
+  console.log(boardArray)
+}
+
+dealBoard();
