@@ -1,3 +1,21 @@
+function arr_diff (a1, a2) {
+    var a = [], diff = [];
+    for (var i = 0; i < a1.length; i++) {
+        a[a1[i]] = true;
+    }
+    for (var i = 0; i < a2.length; i++) {
+        if (a[a2[i]]) {
+            delete a[a2[i]];
+        } else {
+            a[a2[i]] = true;
+        }
+    }
+    for (var k in a) {
+        diff.push(k);
+    }
+    return diff;
+}
+
 var ranksArray = ["A", "K", "Q", "J", "T", "9", "8", "7", "6", "5", "4", "3", "2"]
 var suitsArray = ["s","h","d","c"]
 var cardsArray = []
@@ -11,7 +29,6 @@ for (i = 0; i < ranksArray.length; i++) {
 
 var handsArray = [];
 // fill handsArray
-var count = 0
 for (i = 0; i < cardsArray.length; i++) {
   for (x = 0; x < cardsArray.length; x++) {
     if (i < x){
@@ -20,4 +37,33 @@ for (i = 0; i < cardsArray.length; i++) {
   }
 }
 
-console.log(handsArray)
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
+
+var count = 0
+
+function dealHands(numberOfPlayers){
+  for (i = 0; i < numberOfPlayers; i++){
+    var chosenHand = handsArray[getRandomInt(handsArray.length)]
+    count++;
+    console.log(count)
+    console.log(chosenHand)
+    console.log(handsArray.length)
+    var cardsMissingArray = [chosenHand.charAt(0) + chosenHand.charAt(1), chosenHand.charAt(2) + chosenHand.charAt(3)]
+    console.log(cardsMissingArray)
+    cardsArray = arr_diff(cardsArray, cardsMissingArray)
+    console.log(cardsArray)
+    handsArray = [];
+    for (a = 0; a < cardsArray.length; a++) {
+      for (b = 0; b < cardsArray.length; b++) {
+        if (a < b){
+          handsArray.push(cardsArray[a] + cardsArray[b])
+        }
+      }
+    }
+    console.log(handsArray)
+  }
+}
+
+dealHands(26);
