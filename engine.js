@@ -41,14 +41,13 @@ function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
 }
 
-var count = 0
+playerHandsArray = []
 
 function dealHands(numberOfPlayers){
   for (i = 0; i < numberOfPlayers; i++){
     var chosenHand = handsArray[getRandomInt(handsArray.length)]
-    count++;
-    console.log(count)
     console.log(chosenHand)
+    playerHandsArray.push(chosenHand)
     console.log(handsArray.length)
     var cardsMissingArray = [chosenHand.charAt(0) + chosenHand.charAt(1), chosenHand.charAt(2) + chosenHand.charAt(3)]
     console.log(cardsMissingArray)
@@ -63,10 +62,11 @@ function dealHands(numberOfPlayers){
       }
     }
     console.log(handsArray)
+    console.log(playerHandsArray)
   }
 }
 
-dealHands(1);
+dealHands(2);
 
 boardArray = []
 
@@ -83,3 +83,20 @@ function dealBoard() {
 }
 
 dealBoard();
+
+function chooseBestHand() {
+  console.log(playerHandsArray[0])
+  console.log(playerHandsArray[1])
+
+  //straightflush
+  //quads
+  //full house
+  //flush
+  //str8
+  //trips
+  //two Pair
+  //Pair
+  //hicard
+}
+
+chooseBestHand()
