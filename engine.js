@@ -46,13 +46,9 @@ playerHandsArray = []
 function dealHands(numberOfPlayers){
   for (i = 0; i < numberOfPlayers; i++){
     var chosenHand = handsArray[getRandomInt(handsArray.length)]
-    console.log(chosenHand)
     playerHandsArray.push(chosenHand)
-    console.log(handsArray.length)
     var cardsMissingArray = [chosenHand.charAt(0) + chosenHand.charAt(1), chosenHand.charAt(2) + chosenHand.charAt(3)]
-    console.log(cardsMissingArray)
     cardsArray = arr_diff(cardsArray, cardsMissingArray)
-    console.log(cardsArray)
     handsArray = [];
     for (a = 0; a < cardsArray.length; a++) {
       for (b = 0; b < cardsArray.length; b++) {
@@ -61,8 +57,7 @@ function dealHands(numberOfPlayers){
         }
       }
     }
-    console.log(handsArray)
-    console.log(playerHandsArray)
+    //console.log(handsArray)
   }
 }
 
@@ -71,15 +66,13 @@ dealHands(2);
 boardArray = []
 
 function dealBoard() {
-  console.log(cardsArray.length)
   for(i = 0; i < 5; i++){
     var chosenCard = cardsArray[getRandomInt(cardsArray.length)]
-    console.log(chosenCard)
     boardArray.push(chosenCard)
     cardsArray = arr_diff(cardsArray, [chosenCard])
-    console.log(cardsArray.length)
   }
   console.log(boardArray)
+  console.log(playerHandsArray)
 }
 
 dealBoard();
@@ -96,7 +89,6 @@ function chooseBestHand() {
     cardsInAllHandsArray.push(playerHandsArray[i].charAt(0) + playerHandsArray[i].charAt(1));
     cardsInAllHandsArray.push(playerHandsArray[i].charAt(2) + playerHandsArray[i].charAt(3));
   }
-  console.log(cardsInAllHandsArray[0])
 
 
 
@@ -117,20 +109,76 @@ chooseBestHand()
 // returns array of hands that have a flush given this board
 // takes a hand and array of board cards as its arguments
 function checkForFlush(hand, board){
-  var suitedTrueCount = 0
-  for(i = 0; i < boardArray.length; i++){
-    console.log(boardArray[i].charAt(1))
-    if (boardArray[0].charAt(1) === boardArray[i].charAt(1)) {
-      suitedTrueCount++
-    }
-  console.log(suitedTrueCount)
+  // boardArray = ["2s", "Ks", "9c", "5c", "3c"]
+  // playerHandsArray = ["2cTc"]
+
+  numberOfSpades = boardArray.toString().split("s").length - 1
+  numberOfHearts = boardArray.toString().split("h").length - 1
+  numberOfDiamonds = boardArray.toString().split("d").length - 1
+  numberOfClubs = boardArray.toString().split("c").length - 1
+
+  if(numberOfSpades === 5) {
+    console.log("spade flush on board")
+    //return hand note whether it beats the board
+    return //correct hand
+  }
+  if(numberOfHearts === 5) {
+    console.log("heart flush on board")
+    //return hand note whether it beats the board
+    return //correct hand
+  }
+  if(numberOfDiamonds === 5) {
+    console.log("diamond flush on board")
+    //return hand note whether it beats the board
+    return //correct hand
+  }
+  if(numberOfClubs === 5) {
+    console.log("club flush on board")
+    //return hand note whether it beats the board
+    return //correct hand
   }
 
-  console.log(hand)
-  if(hand.charAt(1) === hand.charAt(3)){
-    console.log("suited")
+  //&& (playerHandsArray[0].charAt(1) === "s" || playerHandsArray[0].charAt(3) === "s"
+  console.log(playerHandsArray[0].charAt(1) + playerHandsArray[0].charAt(3))
+
+  if(numberOfSpades === 4 && (playerHandsArray[0].charAt(1) === "s" || playerHandsArray[0].charAt(3) === "s")) {
+    console.log("report spade flush")
+    return //correct hand
   }
+  if(numberOfHearts === 4 && (playerHandsArray[0].charAt(1) === "h" || playerHandsArray[0].charAt(3) === "h")) {
+    console.log("report heart flush")
+    return //correct hand
+  }
+  if(numberOfDiamonds === 4 && (playerHandsArray[0].charAt(1) === "d" || playerHandsArray[0].charAt(3) === "d")) {
+    console.log("report diamond flush")
+    return //correct hand
+  }
+  if(numberOfClubs === 4 && (playerHandsArray[0].charAt(1) === "c" || playerHandsArray[0].charAt(3) === "c")) {
+    console.log("report clubflush")
+    return //correct hand
+  }
+  // 3 card flushes
+  if(numberOfSpades === 3 && (playerHandsArray[0].charAt(1) === "s" & playerHandsArray[0].charAt(3) === "s")) {
+    console.log("report spade flush")
+    return //correct hand
+  }
+  if(numberOfHearts === 3 && (playerHandsArray[0].charAt(1) === "h" & playerHandsArray[0].charAt(3) === "h")) {
+    console.log("report heart flush")
+    return //correct hand
+  }
+  if(numberOfDiamonds === 3 && (playerHandsArray[0].charAt(1) === "d" & playerHandsArray[0].charAt(3) === "d")) {
+    console.log("report diamond flush")
+    return //correct hand
+  }
+  if(numberOfClubs === 3 && (playerHandsArray[0].charAt(1) === "c" & playerHandsArray[0].charAt(3) === "c")) {
+    console.log("report clubflush")
+    return //correct hand
+  }
+
+
+
 }
+
 
 checkForFlush(playerHandsArray[0])
 
