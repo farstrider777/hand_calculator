@@ -85,10 +85,21 @@ function dealBoard() {
 dealBoard();
 
 function chooseBestHand() {
+
   console.log(playerHandsArray[0])
   console.log(playerHandsArray[1])
 
+  var cardsInAllHandsArray = []
+
+  for (i = 0; i < playerHandsArray.length; i++){
+    //console.log("in for loop")
+    cardsInAllHandsArray.push(playerHandsArray[i].charAt(0) + playerHandsArray[i].charAt(1));
+    cardsInAllHandsArray.push(playerHandsArray[i].charAt(2) + playerHandsArray[i].charAt(3));
+  }
+  console.log(cardsInAllHandsArray[0])
+
   //straightflush
+
   //quads
   //full house
   //flush
