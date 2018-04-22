@@ -98,6 +98,8 @@ function chooseBestHand() {
   }
   console.log(cardsInAllHandsArray[0])
 
+
+
   //straightflush
 
   //quads
@@ -111,3 +113,11 @@ function chooseBestHand() {
 }
 
 chooseBestHand()
+
+function checkForFlush(hand){
+  //if(hand.charAt(1))
+}
+
+function checkForStraight(){
+
+}
