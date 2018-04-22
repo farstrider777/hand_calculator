@@ -114,9 +114,25 @@ function chooseBestHand() {
 
 chooseBestHand()
 
-function checkForFlush(hand){
-  //if(hand.charAt(1))
+// returns array of hands that have a flush given this board
+// takes a hand and array of board cards as its arguments
+function checkForFlush(hand, board){
+  var suitedTrueCount = 0
+  for(i = 0; i < boardArray.length; i++){
+    console.log(boardArray[i].charAt(1))
+    if (boardArray[0].charAt(1) === boardArray[i].charAt(1)) {
+      suitedTrueCount++
+    }
+  console.log(suitedTrueCount)
+  }
+
+  console.log(hand)
+  if(hand.charAt(1) === hand.charAt(3)){
+    console.log("suited")
+  }
 }
+
+checkForFlush(playerHandsArray[0])
 
 function checkForStraight(){
 
