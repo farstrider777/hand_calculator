@@ -1,7 +1,7 @@
 var arrayCards = ["A", "K", "Q", "J", "T", "9", "8", "7", "6", "5", "4", "3", "2"]
 createMatrix();
 var allHands = []
-var sklanskyChubukov = ["AA","KK","AKs","QQ","AK","JJ","AQs","TT","AQ","99","AJs","88","ATs",
+const sklanskyChubukov = ["AA","KK","AKs","QQ","AK","JJ","AQs","TT","AQ","99","AJs","88","ATs",
                         "AJ","77","66","AT","A9s","55","A8s","KQs","44","A9","A7s","KJs","A5s",
                         "A8","A6s","A4s","33","KTs","A7","A3s","KQ","A2s","A5","A6","A4","KJ",
                         "QJs","A3","22","K9s","A2","KT","QTs","K8s","K7s","JTs","K9","K6s","QJ",
@@ -37,6 +37,7 @@ function convertArray () {
 
 var totalPercentage = 0;
 
+// sklansky-chubukov slider 1
 var slider = document.getElementById("myRange");
 var output = document.getElementById("demo");
 output.innerHTML = slider.value; // Display the default slider value
@@ -44,6 +45,17 @@ output.innerHTML = slider.value; // Display the default slider value
 // Update the current slider value (each time you drag the slider handle)
 slider.oninput = function() {
     output.innerHTML = this.value;
+    changeByPercentage(this.value);
+}
+
+// equilab slider 2
+var slider2 = document.getElementById("secondRange");
+var output2 = document.getElementById("secondValue");
+output2.innerHTML = slider2.value; // Display the default slider value
+
+// Update the current slider2 value (each time you drag the slider handle)
+slider2.oninput = function() {
+    output2.innerHTML = this.value;
     changeByPercentage(this.value);
 }
 
