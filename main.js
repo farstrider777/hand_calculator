@@ -45,7 +45,7 @@ output.innerHTML = slider.value; // Display the default slider value
 // Update the current slider value (each time you drag the slider handle)
 slider.oninput = function() {
     output.innerHTML = this.value;
-    changeByPercentage(this.value);
+    changeByPercentage(this.value, sklanskyChubukovPlus);
 }
 
 // equilab slider 2
@@ -56,28 +56,28 @@ output2.innerHTML = slider2.value; // Display the default slider value
 // Update the current slider2 value (each time you drag the slider handle)
 slider2.oninput = function() {
     output2.innerHTML = this.value;
-    changeByPercentage(this.value);
+    changeByPercentage(this.value, sklanskyChubukovPlus);
 }
 
-function changeByPercentage(newPercentage){
+function changeByPercentage(newPercentage, handSchema){
   convertArray();
   totalPercentage = 0;
   count = 0;
   if (newPercentage == 100){
     convertArray();
-    changeAllBoxColor(sklanskyChubukovPlus)
+    changeAllBoxColor(handSchema)
   } else if (newPercentage == 0) {
     changeAllBoxColor([])
   } else {
     for(i = 0; i < 169; i++){
-      addToTotal(sklanskyChubukovPlus[i])
+      addToTotal(handSchema[i])
       if (totalPercentage >= newPercentage){
         count = i;
         break;
       }
     }
     totalPercentage = 0;
-    changeAllBoxColor(sklanskyChubukovPlus.splice(0, count + 1))
+    changeAllBoxColor(handSchema.splice(0, count + 1))
   }
 }
 
