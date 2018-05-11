@@ -195,6 +195,81 @@ slider2.oninput = function() {
     changeByPercentage(this.value, sklanskyChubukovPlus);
 }
 
+// blind level slider 3
+var slider3 = document.getElementById("thirdRange");
+var output3 = document.getElementById("thirdValue");
+output3.innerHTML = slider3.value; // Display the default slider value
+
+// Update the current slider2 value (each time you drag the slider handle)
+slider3.oninput = function() {
+    output3.innerHTML = this.value;
+    changeBlindLevel(this.value);
+}
+
+var blindLevel = 0;
+
+function changeBlindLevel(newPercentage){
+  console.log(newPercentage)
+  if (newPercentage == 0){
+    output3.innerHTML = "10/20";
+    blindLevel = 20;
+  }else if(newPercentage == 1){
+    output3.innerHTML = "20/40";
+    blindLevel = 40;
+  }else if(newPercentage == 2){
+    output3.innerHTML = "30/60";
+    blindLevel = 60;
+  }else if(newPercentage == 3){
+    output3.innerHTML = "40/80";
+    blindLevel = 80;
+  }else if(newPercentage == 4){
+    output3.innerHTML = "50/100";
+    blindLevel = 100;
+  }else if(newPercentage == 5){
+    output3.innerHTML = "75/150";
+    blindLevel = 150;
+  }else if(newPercentage == 6){
+    output3.innerHTML = "100/200 + 20 ante";
+    blindLevel = 200;
+  }else if(newPercentage == 7){
+    output3.innerHTML = "125/250 + 25 ante";
+    blindLevel = 250;
+  }else if(newPercentage == 8){
+    output3.innerHTML = "150/300 + 30 ante";
+    blindLevel = 300;
+  }else if(newPercentage == 9){
+    output3.innerHTML = "200/400 + 40 ante";
+    blindLevel = 400;
+  }else if(newPercentage == 10){
+    output3.innerHTML = "250/500 + 50 ante";
+    blindLevel = 500;
+  }else if(newPercentage == 11){
+    output3.innerHTML = "300/600 + 60 ante";
+    blindLevel = 600;
+  }else if(newPercentage == 12){
+    output3.innerHTML = "400/800 + 80 ante";
+    blindLevel = 750;
+  }else if(newPercentage == 13){
+    output3.innerHTML = "500/1000 + 100 ante";
+    blindLevel = 1000;
+  }else if(newPercentage == 15){
+    output3.innerHTML = "600/1200 + 120 ante";
+    blindLevel = 1200;
+  }else if(newPercentage == 16){
+    output3.innerHTML = "750/1500 + 150 ante";
+    blindLevel = 1500;
+  }else if(newPercentage == 17){
+    output3.innerHTML = "800/1600 + 160 ante";
+    blindLevel = 1600;
+  }else if(newPercentage == 18){
+    output3.innerHTML = "1000/2000 + 200 ante";
+    blindLevel = 2000;
+  }else if(newPercentage == 19){
+    output3.innerHTML = "1250/2500 + 250 ante";
+    blindLevel = 2500;
+  }
+}
+
 function changeByPercentage(newPercentage, handSchema){
   convertArray();
   totalPercentage = 0;
@@ -294,6 +369,55 @@ function createMatrix(){
   }
 }
 
+//-----------------simple calc code------------------
+var numOne = document.getElementById("value-one");
+var numTwo = document.getElementById("value-two");
+var calButton = document.getElementById("cal-butt");
+var resultsDiv = document.getElementById("answer");
+
+function add(){
+
+  var i = (Number(numOne.value) / (Number(numTwo.value) + Number(numOne.value)))
+
+  resultsDiv.innerHTML = i;
+}
+
+calButton.addEventListener('click', add);
+//-----------------simple calc code2------------------
+var numOne2 = document.getElementById("value-one2");
+var numTwo2 = document.getElementById("value-two2");
+var calButton2 = document.getElementById("cal-butt2");
+var resultsDiv2 = document.getElementById("answer2");
+var subtractBlindButton = document.getElementById("subtract-blind-button")
+var subtractSmallBlindButton = document.getElementById("subtract-small-blind-button")
+var subtractAnteButton = document.getElementById("subtract-ante-button")
+
+function add2(){
+
+  var i = (numOne2.value / blindLevel)
+  resultsDiv2.innerHTML = i;
+  numOne.value = numOne2.value;
+}
+
+function subtractBlind(){
+  numOne2.value = Number(numOne2.value) - blindLevel
+  add2();
+}
+
+function subtractSmallBlind(){
+  numOne2.value = Number(numOne2.value) - blindLevel / 2
+  add2();
+}
+
+function subtractAnte(){
+  numOne2.value = Number(numOne2.value) - blindLevel / 10
+  add2();
+}
+
+calButton2.addEventListener('click', add2);
+subtractBlindButton.addEventListener('click',  subtractBlind)
+subtractSmallBlindButton.addEventListener('click',  subtractSmallBlind)
+subtractAnteButton.addEventListener('click',  subtractAnte)
 //Pairs
 document.getElementById("AA").addEventListener('click', changeBoxColor);
 document.getElementById("KK").addEventListener('click', changeBoxColor);
