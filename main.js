@@ -149,6 +149,18 @@ const statRange =
  // 72 s	-0.15	348,368
  // 32 s	-0.15	349,794
 
+const vsRandom = [{hand: "AA", beatsRandom: 85.20},{hand: "KK", beatsRandom: 82.40},
+{hand:"QQ", beatsRandom: 79.92},{hand:"QQ", beatsRandom: 79.92},{hand:"JJ", beatsRandom: 77.47},
+{hand:"TT", beatsRandom: 75.01},{hand:"99", beatsRandom: 72.06},{hand:"88", beatsRandom: 69.16},
+{hand:"AKs", beatsRandom: 67.04},{hand:"77", beatsRandom: 66.24},{hand:"AQs", beatsRandom: 66.21},
+{hand:"AJs", beatsRandom: 65.39},{hand:"AK", beatsRandom: 65.32},{hand:"ATs", beatsRandom: 64.60},
+{hand:"AQ", beatsRandom: 64.43},{hand:"AJ", beatsRandom: 63.56},{hand:"KQs", beatsRandom: 63.40},
+{hand:"66", beatsRandom: 63.28},
+{hand:"A9s", beatsRandom: 62.78},{hand:"AT", beatsRandom: 62.72},{hand:"KJs", beatsRandom: 62.57},
+{hand:"A8s", beatsRandom: 61.94},{hand:"KTs", beatsRandom: 61.79},
+{hand:"A9", beatsRandom: 60.77},{hand:"55", beatsRandom: 60.32},
+{hand:"K9s", beatsRandom: 59.99},{hand:"A8o", beatsRandom: 59.87},
+];
 
 
 //for loop to fill out all the cards
