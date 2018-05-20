@@ -150,7 +150,7 @@ const statRange =
  // 32 s	-0.15	349,794
 
 const vsRandom = [{hand: "AA", beatsRandom: 85.20},{hand: "KK", beatsRandom: 82.40},
-{hand:"QQ", beatsRandom: 79.92},{hand:"QQ", beatsRandom: 79.92},{hand:"JJ", beatsRandom: 77.47},
+{hand:"QQ", beatsRandom: 79.92},{hand:"JJ", beatsRandom: 77.47},
 {hand:"TT", beatsRandom: 75.01},{hand:"99", beatsRandom: 72.06},{hand:"88", beatsRandom: 69.16},
 {hand:"AKs", beatsRandom: 67.04},{hand:"77", beatsRandom: 66.24},{hand:"AQs", beatsRandom: 66.21},
 {hand:"AJs", beatsRandom: 65.39},{hand:"AK", beatsRandom: 65.32},{hand:"ATs", beatsRandom: 64.60},
@@ -160,6 +160,14 @@ const vsRandom = [{hand: "AA", beatsRandom: 85.20},{hand: "KK", beatsRandom: 82.
 {hand:"A8s", beatsRandom: 61.94},{hand:"KTs", beatsRandom: 61.79},
 {hand:"A9", beatsRandom: 60.77},{hand:"55", beatsRandom: 60.32},
 {hand:"K9s", beatsRandom: 59.99},{hand:"A8o", beatsRandom: 59.87},
+];
+
+const vsTop50 = [{hand: "AA", beatsTop50:85.60},{hand: "KK", beatsTop50:79.69},
+{hand: "AA", beatsTop50:74.30},{hand: "JJ", beatsTop50:70.23},
+{hand: "AKs", beatsTop50: 67.35},{hand: "TT", beatsTop50:67.30},{hand:"AK", beatsRandom: 65.73},
+{hand:"AQs", beatsRandom: 64.04},{hand:"99", beatsRandom: 63.98},{hand:"AQ", beatsRandom: 63.25},
+{hand:"AJs", beatsRandom: 62.95},
+{hand:"88", beatsRandom: 61.04},{hand:"AJ", beatsRandom: 60.99}
 ];
 
 
